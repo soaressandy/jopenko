@@ -8,62 +8,37 @@ public class JogoJokenpo {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		int opcao, opcaocomputador;
+
+		int opcaoJogador, opcaocomputador;
+		String nomeJogada = new String();
+		boolean jogadorGanhou;
+
+		// classe para ler a partir do teclado
+
 		Scanner leitor = new Scanner(System.in);
-		String[] opcaonome = { " ","Pedra", "Papel", "Tesoura"}; 
-		boolean ganhou;
-		
+
 		// classe para ler numeros aleatorios
-		
+
 		Random random = new Random();
 
-		System.out.println("------------------------");
-		System.out.println("      J O K E N P O     ");
-		System.out.println("------------------------");
-		System.out.println("1 - Pedra               ");
-		System.out.println("2 - Papel               ");
-		System.out.println("3 - Tesoura             ");
-		System.out.println("------------------------");
-		System.out.println("                        ");
-		System.out.print  ("Digite sua opção......: ");
-		
-		opcao = leitor.nextInt();
-		
-		if (opcao != 1 && opcao != 2 && opcao != 3 ) {
-			
+		// classe criada para treinar depois da aula de 26/01
+
+		Jokenpo jkp = new Jokenpo();
+
+		jkp.ExibirTelaInicial();
+
+		opcaoJogador = leitor.nextInt();
+
+		if (opcaoJogador != 1 && opcaoJogador != 2 && opcaoJogador != 3) {
 			System.out.println("Opcao Invalida !!!");
 		} else {
-			System.out.println("Você escolheu a opcão: " + opcaonome[opcao]);
 			
-			int bound  = 4;
-			
-			// opcao bound - vai de 0 até o bound (e
-			opcaocomputador = random.nextInt(bound); 
-			
-			if (opcaocomputador == 0) {
-				opcaocomputador = 1;	
-			}
-			
-			//System.out.println(opcaocomputador);
-			
-			System.out.println("Computador escolheu a opção: " + opcaonome[opcaocomputador]);
-					
-			if (opcao == opcaocomputador ) {
-				System.out.println("Você e o computador escolheram a mesma opcao - EMPATE !!!");		
-			} else if (opcao == 1 && opcaocomputador == 3) { // Pedra e Tesoura
-				System.out.println("Você ganhou esta !!!"); 
-			} else if (opcao == 1 && opcaocomputador == 2) { // Pedra e Papel
-				System.out.println("Você perdeu esta !!!"); 
-			} else if (opcao == 2 && opcaocomputador == 1) { // Papel e Pedra
-				System.out.println("Você ganhou esta !!!"); 
-			} else if (opcao == 2 && opcaocomputador == 3) { // Papel e Tesoura
-				System.out.println("Você ganhou esta !!!"); 
-			} else if (opcao == 3 && opcaocomputador == 1) { // Tesoura e Pedra
-				System.out.println("Você perdeu esta !!!"); 
-			} else if (opcao == 3 && opcaocomputador == 2) { // Tesoura e papel
-				System.out.println("Você perdeu esta !!!"); 
-			}
-		}	
+			opcaocomputador = random.nextInt(3)+ 1;
+
+			jkp.DeterminarResultadoJogo(opcaoJogador, opcaocomputador);
+
+		}
+		
+		leitor.close();
 	}
 }
