@@ -10,9 +10,7 @@ public class JogoJokenpo {
 		// TODO Auto-generated method stub
 
 		int opcaoJogador, opcaocomputador;
-		String nomeJogada = new String();
-		boolean jogadorGanhou;
-
+	
 		// classe para ler a partir do teclado
 
 		Scanner leitor = new Scanner(System.in);
